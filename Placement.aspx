@@ -33,7 +33,7 @@
         });
     </script>
    
-   <ul id="accordion" style="width: 1200px">
+   <ul id="accordion" style="width:100%">
               <li>
                    <div>
                       Adams</div>
@@ -43,30 +43,30 @@
                           <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
                               <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
-                              <HeaderStyle Width="200px" HorizontalAlign="Center" />
-                              <ItemStyle Width="200px" HorizontalAlign="Center" />
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
                               </asp:BoundField>
                               <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
-                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
-                              <ItemStyle Width="150px" HorizontalAlign="Left" />
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
                               </asp:BoundField>
                               <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
-                              <HeaderStyle Width="200px" />
-                              <ItemStyle Width="200px" />
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
                               </asp:BoundField>
                               <asp:TemplateField HeaderText="Status">
                                   <ItemTemplate>
                                       <asp:Label ID="Label1" runat="server"></asp:Label>
                                   </ItemTemplate>
                                   <HeaderStyle HorizontalAlign="Center" />
-                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="100px" BorderStyle="Solid" BorderWidth="1px" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
                               </asp:TemplateField>
                               <asp:TemplateField HeaderText="Placement">
                                   <ItemTemplate>
                                       <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
                                   </ItemTemplate>
-                                  <HeaderStyle HorizontalAlign="Right" Width="200px" />
-                                  <ItemStyle HorizontalAlign="Right" Width="200px" />
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
                               </asp:TemplateField>
                               <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
