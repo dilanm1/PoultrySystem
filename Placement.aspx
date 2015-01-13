@@ -272,7 +272,7 @@
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT StockLevel/1000 AS [-----] FROM tblHouse"></asp:SqlDataSource>--%>
 
-</asp:Panel>
+<%--</asp:Panel>--%>
        <div>
 	<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ShowFooter="true"
 	onrowdatabound="GridView1_RowDataBound"  onrowcreated="GridView1_RowCreated">
