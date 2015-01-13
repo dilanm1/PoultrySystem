@@ -67,7 +67,7 @@
                         <li><a runat="server" href="~/">Process</a></li>                       
                         <li><a runat="server" href="~/About.aspx">Order</a></li>
                         <li><a id="A1" runat="server" href="~/Contact.aspx">Reports</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                        <li><a runat="server" href="~/">Contact</a></li>
                     </ul>
                 </nav>
             </div>
