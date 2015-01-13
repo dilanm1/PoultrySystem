@@ -23,17 +23,17 @@
             <h5>Order Stock</h5>
             ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
             A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            <a href="~/Placement.aspx" style="color: #0000FF; font-weight: bold">Order Now…</a>
+            <a href="Placement.aspx" style="color: #0000FF; font-weight: bold">Order Now…</a>
         </li>
         <li class="two">
             <h5>Place Stock</h5>
             NuGet makes it easy to install and update free libraries and tools.
-            <a href="~/Placement.aspx" style="color: #0000FF; font-weight: bold">Place Now…</a>
+            <a href="Placement.aspx" style="color: #0000FF; font-weight: bold">Place Now…</a>
         </li>
         <li class="three">
             <h5>Process Stock</h5>
             You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            <a href="~/Placement.aspx" style="color: #0000FF; font-weight: bold">Process Now…</a>
+            <a href="Placement.aspx" style="color: #0000FF; font-weight: bold">Process Now…</a>
         </li>
     </ol>
 </asp:Content>
