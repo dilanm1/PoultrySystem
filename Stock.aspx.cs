@@ -29,7 +29,7 @@ namespace PoultrySystem
 
             SqlConnection con = new SqlConnection(DBUtil.ConnectionString);
             DataTable StockRecord = new DataTable();
-            string command = "select HouseNumber,GrowerName,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID  Order By GrowerName ";
+            string command = "select GrowerName,HouseNumber,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID  Order By GrowerName ";
             SqlCommand cmd = new SqlCommand(command, con);
             con.Open();
             StockRecord.Load(cmd.ExecuteReader());
