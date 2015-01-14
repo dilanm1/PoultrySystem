@@ -20,7 +20,7 @@
         <li class="one">
             <h5>Order Stock</h5>
             This module manages the stock Order Process
-            <a href="~/" style="color: #0000FF; font-weight: bold">Order Now…</a>
+            <a href="Default.aspx" style="color: #0000FF; font-weight: bold">Order Now…</a>
         </li>
         <li class="two">
             <h5>Place Stock</h5>
@@ -30,7 +30,7 @@
         <li class="three">
             <h5>Process Stock</h5>
             This module Process the placed chicks according to business logics. 
-            <a href="~/" style="color: #0000FF; font-weight: bold">Process Now…</a>
+            <a href="Default.aspx" style="color: #0000FF; font-weight: bold">Process Now…</a>
         </li>
     </ol>
 </asp:Content>
