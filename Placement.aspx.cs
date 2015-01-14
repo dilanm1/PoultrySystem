@@ -23,23 +23,23 @@ namespace PoultrySystem
                 createAccordianUsingRepeater();
            
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataSet ds = new DataSet();
-            int i = 0;
-            string sql = null;
-            // string connetionString = "Data Source=.;Initial Catalog=pubs;User ID=sa;Password=*****";
-            sql = "SELECT  distinct tblPlacement.Date, tblGrower.GrowerName, tblHouse.HouseNumber, tblPlacementDetail.Amount FROM  tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID INNER JOIN tblPlacementDetail ON tblHouse.HouseID = tblPlacementDetail.HouseID INNER JOIN tblPlacement ON tblPlacementDetail.PlcementID = tblPlacement.PlacementID Group By tblPlacement.Date, tblGrower.GrowerName, tblHouse.HouseNumber, tblPlacementDetail.Amount ORDER BY tblPlacement.Date DESC";
-            SqlConnection connection = new SqlConnection(DBUtil.ConnectionString);
-            connection.Open();
-            SqlCommand command = new SqlCommand(sql, connection);
-            adapter.SelectCommand = command;
-            adapter.Fill(ds);
-            adapter.Dispose();
-            command.Dispose();
-            connection.Close();
-            GridView GridView1 = new GridView();
-            GridView1.DataSource = ds.Tables[0];
-            GridView1.DataBind();
+            //SqlDataAdapter adapter = new SqlDataAdapter();
+            //DataSet ds = new DataSet();
+            //int i = 0;
+            //string sql = null;
+            //// string connetionString = "Data Source=.;Initial Catalog=pubs;User ID=sa;Password=*****";
+            //sql = "SELECT  distinct tblPlacement.Date, tblGrower.GrowerName, tblHouse.HouseNumber, tblPlacementDetail.Amount FROM  tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID INNER JOIN tblPlacementDetail ON tblHouse.HouseID = tblPlacementDetail.HouseID INNER JOIN tblPlacement ON tblPlacementDetail.PlcementID = tblPlacement.PlacementID Group By tblPlacement.Date, tblGrower.GrowerName, tblHouse.HouseNumber, tblPlacementDetail.Amount ORDER BY tblPlacement.Date DESC";
+            //SqlConnection connection = new SqlConnection(DBUtil.ConnectionString);
+            //connection.Open();
+            //SqlCommand command = new SqlCommand(sql, connection);
+            //adapter.SelectCommand = command;
+            //adapter.Fill(ds);
+            //adapter.Dispose();
+            //command.Dispose();
+            //connection.Close();
+            //GridView GridView1 = new GridView();
+            //GridView1.DataSource = ds.Tables[0];
+            //GridView1.DataBind();
                 }
         }
         protected void ConsumptionGrid_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -47,28 +47,63 @@ namespace PoultrySystem
   
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+
                 if ((string.IsNullOrEmpty(e.Row.Cells[3].Text) != true) || (e.Row.Cells[3].Text != " "))
                 {
                     int result = Convert.ToInt32(e.Row.Cells[2].Text);
                     if (result == 0)
                     {
                         e.Row.Cells[3].BackColor = System.Drawing.Color.Red;
-                        e.Row.Cells[3].Text = "Place";
+                        e.Row.Cells[3].Text = "Out Of Stock";
+                        e.Row.Cells[4].BackColor = System.Drawing.Color.Yellow;
                     }
 
                     else if (result > 0)
                     {
-                        e.Row.Cells[3].BackColor = System.Drawing.Color.Green;
-                        e.Row.Cells[3].Text = "OK";
-                        e.Row.Cells[4].Enabled = false;
-                        e.Row.Cells[5].Enabled = false;
+                      
+                              
 
+
+                                e.Row.Cells[3].BackColor = System.Drawing.Color.Green;
+                                e.Row.Cells[3].Text = "OK";
+                                e.Row.Cells[4].Enabled = false;
+                                e.Row.Cells[5].Enabled = false;
+                               
+                                //e.Row.Cells[4].Visible = false;
+                                //e.Row.Cells[5].Visible = false;
+
+
+                               // TextBox text = e.Row.FindControl("TextBox1") as TextBox;
+                              //  text.Visible = false;
+                            
+                        
+                     
 
 
                     }
                 }
             }
        }
+        private void BindGridData()
+        {
+          // using (SqlConnection conn = new SqlConnection(DBUtil.ConnectionString))
+          //{
+          //  conn.Open();
+          //  using (SqlCommand comm = new SqlCommand("SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)", conn))
+          //  {
+          //      SqlDataAdapter da = new SqlDataAdapter(comm);
+          //      DataSet ds = new DataSet();
+          //      da.Fill(ds);
+          //      ConsumptionGrid.DataSource = ds;
+          //      ConsumptionGrid.DataBind();
+          //  }
+          //}
+}
+        protected void ConsumptionGrid_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            BindGridData();
+        }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {

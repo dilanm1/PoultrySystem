@@ -32,13 +32,80 @@
             });
         });
     </script>
-   
-   <ul id="accordion" style="width:100%">
+   <h1>Chick Placement</h1>
+   <ul id="accordion" style="width:100%">       
               <li>
                    <div>
                       Adams</div>
                   <ul><li>
-                      <asp:GridView ID="ConsumptionGrid" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                      <asp:GridView ID="ConsumptionGrid" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="Horizontal" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged" BorderStyle="Solid"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" ReadOnly="True" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" ReadOnly="True" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" ReadOnly="True" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement"  >
+                                  <ItemTemplate >
+                                      <asp:TextBox ID="TextBox2" Style="text-align: center" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <ControlStyle Width="100px" />
+                                  <HeaderStyle HorizontalAlign="Center" Width="100px" />
+                                  <ItemStyle HorizontalAlign="Center" Width="100px" />
+                              </asp:TemplateField>
+                               <asp:TemplateField HeaderText="Action">
+ 
+                              <ItemTemplate>
+                              <asp:LinkButton ID="btnEdit" Text="Place" runat="server" CommandName="Edit" />
+                            <%--  <br />
+                              <asp:LinkButton ID="btnDelete" Text="Delete" runat="server" CommandName="Delete" />--%>
+                              </ItemTemplate>
+ 
+<%--                              <EditItemTemplate>
+                              <asp:LinkButton ID="btnUpdate" Text="Update" runat="server" CommandName="Update" />
+                              <asp:LinkButton ID="btnCancel" Text="Cancel" runat="server" CommandName="Cancel" />
+                              </EditItemTemplate>--%>
+ 
+      </asp:TemplateField>
+ 
+                          </Columns>
+                       <%--   <EmptyDataTemplate >
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />--%>
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                  <div>
+                      Capper</div>
+                  <ul><li>
+                     <asp:GridView ID="GridView8" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
                           <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
@@ -82,28 +149,49 @@
                           <SortedDescendingCellStyle BackColor="#E1DB9C" />
                           <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 11)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
-              <li>
-                  <div>
-                      Capper</div>
-                  <ul><li>
-                      <asp:GridView ID="ConsumerGrid" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource2" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None"
-                         >
+                <li>
+                   <div>
+                      Evans</div>        
+                       <ul><li>
+                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
                           <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
                               <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
-                              <ItemStyle Width="200px" />
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
                               </asp:BoundField>
-                              <asp:BoundField DataField="HouseSize" HeaderText="House Size" SortExpression="HouseSize" >
-                              <ItemStyle Width="300px" />
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
                               </asp:BoundField>
                               <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
-                              <ItemStyle Width="300px" />
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
                               </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
                           <FooterStyle BackColor="Tan" />
                           <HeaderStyle BackColor="Tan" Font-Bold="True" />
                           <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
@@ -113,39 +201,60 @@
                           <SortedDescendingCellStyle BackColor="#E1DB9C" />
                           <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 11)"></asp:SqlDataSource>
-                      </li>
-                  </ul>
-              </li>
-                <li>
-                   <div>
-                      Evans</div>        
-                       <ul><li>
-                      <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
-                          >
-                          <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
-                          </Columns>
-                      </asp:GridView>
                       <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 3)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
-                <li>
+               <li>
                    <div>
-                      Gwynne</div>
+                      Gwynne
+                   </div>
                   <ul><li>
-                      <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
+                    <asp:GridView ID="GridView18" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 14)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource18" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 14)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
@@ -153,15 +262,51 @@
                    <div>
                       Heath</div>
                   <ul><li>
-                      <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 8)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 8)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
@@ -170,15 +315,51 @@
                       Hillditch
                    </div>
                   <ul><li>
-                      <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
+                     <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 13)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 13)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
@@ -186,15 +367,51 @@
                    <div>
                       Home</div>
                   <ul><li>
-                      <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
+                   <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 15)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 15)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>
@@ -202,15 +419,581 @@
                    <div>
                       Jones</div>
                   <ul><li>
-                      <asp:GridView ID="GridView7" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1"
+                   <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
                           >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
                           <Columns>
-                              <asp:BoundField DataField="HouseNumber" HeaderText="HouseNumber" SortExpression="HouseNumber" />
-                              <asp:BoundField DataField="HouseSize" HeaderText="HouseSize" SortExpression="HouseSize" />
-                              <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" SortExpression="StockLevel" />
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
                           </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 6)"></asp:SqlDataSource>
+                      <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+               <li>
+                  <div>
+                      Kyn 4 xs
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView7" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Kyn Perry
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView9" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Mills
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView10" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Muir
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView11" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Parton
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView12" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Price
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView13" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource13" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                     Priestley
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView14" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource14" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                     Whittaker
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView15" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource15" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                      Williams
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView16" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource16" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
+                      </li>
+                  </ul>
+              </li>
+                 <li>
+                  <div>
+                     Worsnop
+                  </div>
+                  <ul><li>
+                     <asp:GridView ID="GridView17" runat="server" AutoGenerateColumns="False" AllowSorting="True" DataSourceID="SqlDataSource1" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" OnRowDataBound="ConsumptionGrid_RowDataBound" OnSelectedIndexChanged="ConsumptionGrid_SelectedIndexChanged"
+                          >
+                          <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                          <Columns>
+                              <asp:BoundField DataField="HouseNumber" HeaderText="House Number" SortExpression="HouseNumber" >
+                              <HeaderStyle Width="150px" HorizontalAlign="Center" />
+                              <ItemStyle Width="150px" HorizontalAlign="Center" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="HouseSize" HeaderText="Size" SortExpression="HouseSize" >
+                              <HeaderStyle Width="100px" HorizontalAlign="Center" />
+                              <ItemStyle Width="100px" HorizontalAlign="Left" />
+                              </asp:BoundField>
+                              <asp:BoundField DataField="StockLevel" HeaderText="Stock Level" SortExpression="StockLevel" >
+                              <HeaderStyle Width="150px" />
+                              <ItemStyle Width="150px" />
+                              </asp:BoundField>
+                              <asp:TemplateField HeaderText="Status">
+                                  <ItemTemplate>
+                                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Center" />
+                                  <ItemStyle Font-Bold="True" HorizontalAlign="Center" Width="85px" BorderStyle="Solid" BorderWidth="1px" />
+                              </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Placement">
+                                  <ItemTemplate>
+                                      <asp:TextBox ID="TextBox2" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
+                                  </ItemTemplate>
+                                  <HeaderStyle HorizontalAlign="Right" Width="150px" />
+                                  <ItemStyle HorizontalAlign="Right" Width="150px" />
+                              </asp:TemplateField>
+                              <asp:ButtonField ButtonType="Button" CommandName="Update" Text="Place" />
+                          </Columns>
+                          <EmptyDataTemplate>
+                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </EmptyDataTemplate>
+                          <FooterStyle BackColor="Tan" />
+                          <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                          <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                          <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                          <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                          <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                          <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                          <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                      </asp:GridView>
+                      <asp:SqlDataSource ID="SqlDataSource17" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT tblGrower.GrowerName, tblHouse.HouseNumber, tblHouse.HouseSize, tblHouse.StockLevel FROM tblGrower INNER JOIN tblHouse ON tblGrower.GrowerID = tblHouse.GrowerID WHERE (tblGrower.GrowerID = 7)"></asp:SqlDataSource>
                       </li>
                   </ul>
               </li>

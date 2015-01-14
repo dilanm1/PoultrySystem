@@ -46,8 +46,8 @@
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                               <%-- <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>--%>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -62,12 +62,12 @@
                 <nav>
                     <ul id="menu">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Stock.aspx">Stock</a></li>
-                        <li><a runat="server" href="~/Placement.aspx">Placements</a></li>
+                        <li><a id="A2" runat="server" href="~/Placement.aspx">Placements</a></li>
+                        <li><a runat="server" href="~/Stock.aspx">Stock</a></li>                       
                         <li><a runat="server" href="~/">Process</a></li>                       
                         <li><a runat="server" href="~/About.aspx">Order</a></li>
-                        <li><a id="A1" runat="server" href="~/Contact.aspx">Reports</a></li>
-                        <li><a runat="server" href="~/">Contact</a></li>
+                        <li><a id="A1" runat="server" href="~/">Reports</a></li>
+                       <%-- <li><a runat="server" href="~/">Contact</a></li>--%>
                     </ul>
                 </nav>
             </div>

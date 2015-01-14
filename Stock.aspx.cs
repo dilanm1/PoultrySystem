@@ -47,7 +47,7 @@ namespace PoultrySystem
             DropDownList DropDownList1 = new DropDownList();
             SqlConnection con = new SqlConnection(DBUtil.ConnectionString);
             DataTable StockRecord = new DataTable();
-            string command = "select HouseNumber,GrowerName,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID WHERE tblGrower.GrowerID = " + DropDownList1.SelectedItem.Value + ""; 
+            string command = "select GrowerName,HouseNumber,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID WHERE tblGrower.GrowerID = " + DropDownList1.SelectedItem.Value + ""; 
             SqlCommand cmd = new SqlCommand(command, con);
             con.Open();
             StockRecord.Load(cmd.ExecuteReader());
@@ -66,6 +66,7 @@ namespace PoultrySystem
             //GridView2.Visible = true;
             GridView1.Visible = true;
             GridView2.Visible = false;
+            Label2.Visible = false;
             
           
         }
@@ -78,7 +79,7 @@ namespace PoultrySystem
                 //   DropDownList DropDownList1 = new DropDownList();
                 SqlConnection con = new SqlConnection(DBUtil.ConnectionString);
                 DataTable StockRecord = new DataTable();
-                string command = "select HouseNumber,GrowerName,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID WHERE tblGrower.GrowerID = " + DropDownList1.SelectedItem.Value + "";
+                string command = "select GrowerName,HouseNumber,HouseSize,StockLevel from tblGrower right join tblHouse on tblGrower.GrowerID = tblHouse.GrowerID WHERE tblGrower.GrowerID = " + DropDownList1.SelectedItem.Value + "";
                 SqlCommand cmd = new SqlCommand(command, con);
                 con.Open();
 
@@ -92,6 +93,9 @@ namespace PoultrySystem
             else
             {
                 GridView2.Visible = false;
+                Label2.Visible = false;
+
+
 
             }
         }
@@ -106,8 +110,108 @@ namespace PoultrySystem
             //GridView2.Visible = true;
             GridView1.Visible = false;
             Button1.Text = "Full View";
+            Label2.Visible = true;
 
         }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                if ((string.IsNullOrEmpty(e.Row.Cells[3].Text) != true) || (e.Row.Cells[3].Text != " "))
+                {
+                    int result = Convert.ToInt32(e.Row.Cells[4].Text);
+                    if (result == 0)
+                    {
+                        e.Row.Cells[0].BackColor = System.Drawing.Color.Red;
+                        e.Row.Cells[0].Text = "Out Of Stock";
+                       // e.Row.Cells[4].BackColor = System.Drawing.Color.Yellow;
+                    }
+
+                    else if (result > 0)
+                    {
+
+
+
+
+                        e.Row.Cells[0].BackColor = System.Drawing.Color.LightGreen;
+                        e.Row.Cells[0].Text = "OK";
+                        //e.Row.Cells[4].Enabled = false;
+                        //e.Row.Cells[5].Enabled = false;
+
+                        //e.Row.Cells[4].Visible = false;
+                        //e.Row.Cells[5].Visible = false;
+
+
+                        // TextBox text = e.Row.FindControl("TextBox1") as TextBox;
+                        //  text.Visible = false;
+
+
+
+
+
+                    }
+                }
+            }
+        }
+
+        protected void GridView1_PageIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            DataTable StockRecord = GetStockData();
+            GridView1.DataSource = StockRecord;
+            GridView1.DataBind();
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                if ((string.IsNullOrEmpty(e.Row.Cells[3].Text) != true) || (e.Row.Cells[3].Text != " "))
+                {
+                    int result = Convert.ToInt32(e.Row.Cells[4].Text);
+                    if (result == 0)
+                    {
+                        e.Row.Cells[0].BackColor = System.Drawing.Color.Red;
+                        e.Row.Cells[0].Text = "Out Of Stock";
+                        // e.Row.Cells[4].BackColor = System.Drawing.Color.Yellow;
+                    }
+
+                    else if (result > 0)
+                    {
+
+
+
+
+                        e.Row.Cells[0].BackColor = System.Drawing.Color.LightGreen;
+                        e.Row.Cells[0].Text = "OK";
+                        //e.Row.Cells[4].Enabled = false;
+                        //e.Row.Cells[5].Enabled = false;
+
+                        //e.Row.Cells[4].Visible = false;
+                        //e.Row.Cells[5].Visible = false;
+
+
+                        // TextBox text = e.Row.FindControl("TextBox1") as TextBox;
+                        //  text.Visible = false;
+
+
+
+
+
+                    }
+                }
+            }
+        }
+
 
        
     }
